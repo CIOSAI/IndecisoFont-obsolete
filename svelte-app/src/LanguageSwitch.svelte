@@ -60,18 +60,4 @@
     animation: dropdown-anim 200ms cubic-bezier(.27,.83,.58,.97);
     transform: scaleY(1);
   }
-
-  @keyframes foldback-anim {
-  from {
-    transform: scaleY(1);
-  }
-
-  to {
-    transform: scaleY(0);
-  }}
-
-  .dropdown:not(hover) .dropdown-content {
-    animation: foldback-anim 200ms cubic-bezier(.27,.83,.58,.97);
-    transform: scaleY(0);
-  }
 </style>

@@ -1,17 +1,22 @@
 <script lang="ts">
   import Page from "./Page.svelte";
-  import LangSwitch from "./LanguageSwitch.svelte";
-    import LanguageSwitch from "./LanguageSwitch.svelte";
+  import LanguageSwitch from "./LanguageSwitch.svelte";
+  import ScrollingBG from "./ScrollingBG.svelte";
   let name:string = "asdoihfo";
 </script>
 
 <main>
+  <ScrollingBG back="001122" fore="113355"/>
   <LanguageSwitch col="558888"/>
-  <Page col="89abcd">
-    <h1>bruh {name}</h1>
+  <Page col="00000000">
+    <h1>section 1</h1>
   </Page>
-  <Page col="cd89ab"></Page>
-  <Page col="cdab89"></Page>
+  <Page col="00000000">
+    <h1>section 2</h1>
+  </Page>
+  <Page col="664444">
+    <h1>section 3</h1>
+  </Page>
 </main>
 
 <style>
@@ -22,6 +27,7 @@
 	main {
     display: flex;
     flex-wrap: wrap;
+    color: #ddd;
 	}
 
 	@media (min-width: 640px) {
