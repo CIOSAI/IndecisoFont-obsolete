@@ -60,6 +60,7 @@
     color: var(--text);
     margin: 1em;
     background-color: var(--bg3);
+    border-radius: 0em 1em 0em 0em;
   }
    /* unvisited link */
   a:link {
