@@ -1,9 +1,10 @@
 <script lang="ts">
   export let link:string = "";
   export let name:string = "";
+  export let download:string = "false";
 </script>
 
-<a href={link}>
+<a href={link} download={download}>
   <slot></slot>
   <span style="width: 5%;"></span>
   <span id="button-text">{name}</span>
