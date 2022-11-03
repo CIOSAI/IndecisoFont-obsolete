@@ -2,17 +2,18 @@
   import Page from "./Page.svelte";
   import LanguageSwitch from "./LanguageSwitch.svelte";
   import ScrollingBG from "./ScrollingBG.svelte";
-  let name:string = "asdoihfo";
+  import Title from "./Title.svelte";
+  import ShowCase from "./ShowCase.svelte";
 </script>
 
 <main>
   <ScrollingBG back="001122" fore="113355"/>
   <LanguageSwitch col="558888"/>
   <Page col="00000000">
-    <h1>section 1</h1>
+    <Title/>
   </Page>
   <Page col="00000000">
-    <h1>section 2</h1>
+    <ShowCase/>
   </Page>
   <Page col="664444">
     <h1>section 3</h1>
