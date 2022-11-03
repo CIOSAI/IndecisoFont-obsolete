@@ -9,8 +9,8 @@ import {RandText} from "./RandText";
 
   let chars:string[][] = [];
   let rtCopy = Array.from(RandText+RandText);
-  let rtDimension:number = Math.sqrt(rtCopy.length/2);
-  for(let y=0; y<rtDimension*2; y++){
+  let rtDimension:number = Math.sqrt(rtCopy.length);
+  for(let y=0; y<rtDimension; y++){
     let column = []
     for(let x=0; x<rtDimension; x++){
       rtCopy.sort(()=>Math.random()-0.5);
@@ -74,7 +74,7 @@ import {RandText} from "./RandText";
     top: 0;
     left: 0;
     width: 200vw;
-    height: 400vh;
+    height: 200vh;
     color: var(--forecol);
     background-color: var(--backcol);
     font-size: calc(var(--charsize)*0.75);
