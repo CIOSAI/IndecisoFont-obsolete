@@ -4,6 +4,7 @@
   import ScrollingBG from "./ScrollingBG.svelte";
   import Title from "./Title.svelte";
   import ShowCase from "./ShowCase.svelte";
+  import PlayGround from "./PlayGround.svelte";
 </script>
 
 <main>
@@ -15,8 +16,8 @@
   <Page col="00000000">
     <ShowCase/>
   </Page>
-  <Page col="664444">
-    <h1>section 3</h1>
+  <Page col="554466">
+    <PlayGround/>
   </Page>
 </main>
 
