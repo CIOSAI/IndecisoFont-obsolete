@@ -5,19 +5,25 @@
   import Title from "./Title.svelte";
   import ShowCase from "./ShowCase.svelte";
   import PlayGround from "./PlayGround.svelte";
+
+  let language:number = 0;
+
+  function handleLang(l:number){
+    language = l
+  }
 </script>
 
 <main>
-  <ScrollingBG back="001122" fore="113355"/>
-  <LanguageSwitch col="558888"/>
-  <Page col="00000000">
-    <Title/>
+  <ScrollingBG/>
+  <LanguageSwitch languageHandler={handleLang}/>
+  <Page>
+    <Title language={language}/>
   </Page>
-  <Page col="00000000">
+  <Page>
     <ShowCase/>
   </Page>
-  <Page col="554466">
-    <PlayGround/>
+  <Page>
+    <PlayGround language={language}/>
   </Page>
 </main>
 
@@ -25,11 +31,20 @@
   :global(body, html){
     margin: 0;
     padding: 0;
+  }    
+  :global(:root){
+    --bg: #012;
+    --bg2: #124;
+    --bg3: #335;
+    --secondary: rgb(49, 95, 95);
+    --secondary2: #4a9;
+    --text: #bcc;
+    --highlight: #eef;
   }
 	main {
     display: flex;
     flex-wrap: wrap;
-    color: #ddd;
+    color: var(--text);
 	}
 
 	@media (min-width: 640px) {

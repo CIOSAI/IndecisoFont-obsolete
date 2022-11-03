@@ -1,18 +1,46 @@
 <script lang="ts">
   import DownloadButton from "./DownloadButton.svelte";
+
+  export let language:number = 0;
 </script>
 
 <main>
   <div id="container">
-    <h1 class="noMargin" contenteditable="true" spellcheck="false">Try It Out!</h1>
+    <h1 class="noMargin" contenteditable="true" spellcheck="false">
+      {#if language==0}
+        Try It Out!
+      {:else if language==1}
+        Come Try!
+      {:else if language==2}
+        Chhì Khòaⁿ Māi!
+      {:else}
+        Tshì Khuànn Māi!
+      {/if}
+    </h1>
     <br>
-    <h2 class="noMargin" contenteditable="true" spellcheck="false">You Can Edit Any Text Here!</h2>
+    <h2 class="noMargin" contenteditable="true" spellcheck="false">
+      {#if language==0}
+        You Can Edit Any Text Here!
+      {:else if language==1}
+        Here All Can Edit!
+      {:else if language==2}
+        Chia ê Lāi-Iông Lóng Ē-Sái Kái!
+      {:else}
+        Tsia ê Lāi-Iông Lóng Ē-Sái Kái!
+      {/if}
+    </h2>
     <br>
     <div id="download-button">
-      <DownloadButton/>
+      <DownloadButton language={language}/>
     </div>
     <p class="noMargin" contenteditable="true" spellcheck="false">
-      A monospaced font, also called a fixed-pitch, fixed-width, or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space. This contrasts with variable-width fonts, where the letters and spacings have different widths. 
+      {#if language<=1}
+        A monospaced font, also called a fixed-pitch, fixed-width, or non-proportional font, is a font whose letters and characters each occupy the same amount of horizontal space. This contrasts with variable-width fonts, where the letters and spacings have different widths. 
+      {:else if language==2}
+        Kâng-khoah-tō&#856;, Mā hō-chò kò&#856;-tēng-khoah-tō&#856;, Piáu-sī chit-ê jī-thé ê muí chi̍t jī chiàm kâng-khòan khong-kan. Án-ne kah ī-khoah jī-thé to̍h ū chha, ī-khoah tīo-sī it-poaⁿ khòaⁿ tio̍h, bô-kâng jī chiàm bô-kâng khong-kan ê hit-khòan. 
+      {:else}
+        Kâng-khuah-tōo, Mā hō-tsò kòo-tīng-khuah-tōo, Piáu-sī tsit-ê jī-thé ê muí tsi̍t jī tsiàm kâng-khuàn khong-kan. Án-ne kah ī-khuah jī-thé to̍h ū tsha, ī-khuah tīo-sī it-puann khuànn tio̍h, bô-kâng jī tsiàm bô-kâng khong-kan ê hit-khuàn. 
+      {/if}
     </p>
       <br><br>
     <p class="noMargin" contenteditable="true" spellcheck="false">
@@ -40,22 +68,31 @@
 <style>
   main{
     height: 100%;
+    background-color: var(--secondary);
   }
   #container{
     padding: 2% 5%;
   }
   h1{
     font-size: 96px;
+    outline: none;
   }
   h2{
     font-size: 48px;
+    outline: none;
   }
   p{
     font-size: 18px;
+    outline: none;
   }
   .noMargin{
     margin: 0;
   }
+
+  *:focus{
+    color: var(--highlight);
+  }
+
   #download-button{
     width: 24em;
     height: 8em;
@@ -66,8 +103,13 @@
     width: 24em;
     height: 9em;
     float: left;
-    margin: 2%;
+    padding: 1%;
+    margin: 1%;
     font-size: larger;
+    outline: none;
+  }
+  #code-block:focus{
+    background-color: var(--bg2);
   }
   #footnote{
     text-align: right;

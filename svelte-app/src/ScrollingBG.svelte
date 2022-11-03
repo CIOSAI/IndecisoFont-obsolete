@@ -1,12 +1,5 @@
 <script lang="ts">
-  import { xlink_attr } from "svelte/internal";
 import {RandText} from "./RandText";
-
-	export let fore: string = "ffddee";
-	export let back: string = "00ff00";
-  $: forecol = "#"+fore;
-  $: backcol = "#"+back;
-
   let chars:string[][] = [];
   let rtCopy = Array.from(RandText+RandText);
   let rtDimension:number = Math.sqrt(rtCopy.length);
@@ -36,7 +29,6 @@ import {RandText} from "./RandText";
 
 <main 
   bind:clientWidth={w} bind:clientHeight={h}
-  style:--forecol={forecol} style:--backcol={backcol} 
   style:--charsize={charsize+"px"} 
   style:--versize={w/gridw+"px"} style:--horsize={h/gridh+"px"}
   >
@@ -75,8 +67,8 @@ import {RandText} from "./RandText";
     left: 0;
     width: 200vw;
     height: 200vh;
-    color: var(--forecol);
-    background-color: var(--backcol);
+    color: var(--bg2);
+    background-color: var(--bg);
     font-size: calc(var(--charsize)*0.75);
     user-select: none;
     display: grid;

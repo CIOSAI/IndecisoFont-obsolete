@@ -5,16 +5,61 @@
 
 <a href={link}>
   <slot></slot>
+  <span style="width: 5%;"></span>
   <span id="button-text">{name}</span>
 </a>
 
 <style>
+  @keyframes highlight{
+    from{
+      color: var(--text);
+    }
+    to{
+      color: var(--highlight);
+    }
+  }
+
+  @keyframes dim-down{
+    from{
+      color: var(--highlight);
+    }
+    to{
+      color: var(--text);
+    }
+  }
+
+  @keyframes bob{
+    from{
+      scale: 1;
+    }
+    to{
+      scale: 1.05;
+    }
+  }
+
+  @keyframes bobdown{
+    from{
+      scale: 1.05;
+    }
+    to{
+      scale: 1;
+    }
+  }
+
+  #button-text{
+    font-size: 2em;
+  }
+
   a{
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    animation: dim-down 200ms linear, bobdown 150ms cubic-bezier(0,1.19,.51,1.18);
+    color: var(--text);
+    margin: 1em;
+    background-color: var(--bg3);
   }
    /* unvisited link */
   a:link {
@@ -31,12 +76,8 @@
   /* mouse over link */
   a:hover {
     text-decoration: none;
-    color: inherit;
-  }
-
-  /* selected link */
-  a:active {
-    text-decoration: none;
-    color: inherit;
+    animation: highlight 200ms linear, bob 150ms cubic-bezier(0,1.19,.51,1.18);
+    color: var(--highlight);
+    scale: 1.05;
   }
 </style>

@@ -1,8 +1,7 @@
 <script lang="ts">
   import LanguageRadio from "./LanguageRadio.svelte";
 
-	export let col: string = "012345";
-  $: bgcol = "#"+col;
+  export let languageHandler;
 
   enum languages {
     EN_US,
@@ -11,20 +10,20 @@
     MN_KIP
   }
 
-  const langName = ["English", "English lah", "Pe\u030Dh-oē-jī", "Kàu-io\u030Dk-pōo im-phiau"]
+  const langName = ["English", "English lah", "Pe\u030Dh-oē-jī", "Tâi-lô"]
 
   let language: number = 0;
-  $: console.log(language);
+  $: languageHandler(language);
   let buttonValueHander =(val)=>{return ()=> {language = val}} ;
 </script>
 
-<main style:--bgcol={bgcol} class="dropdown">
-  {langName[language]}
+<main class="dropdown">
+  <span>{langName[language]}</span>
   <div class="dropdown-content">
-    <LanguageRadio text="English US" valueHandler={buttonValueHander(languages.EN_US)}></LanguageRadio>
-    <LanguageRadio text="English SG" valueHandler={buttonValueHander(languages.EN_SG)}></LanguageRadio>
-    <LanguageRadio text="Hokkien POJ" valueHandler={buttonValueHander(languages.MN_POJ)}></LanguageRadio>
-    <LanguageRadio text="Hokkien KIP" valueHandler={buttonValueHander(languages.MN_KIP)}></LanguageRadio>
+    <LanguageRadio text="English" valueHandler={buttonValueHander(languages.EN_US)} selected={language==languages.EN_US}/>
+    <LanguageRadio text="English lah" valueHandler={buttonValueHander(languages.EN_SG)} selected={language==languages.EN_SG}/>
+    <LanguageRadio text="Pe̍h-oē-jī" valueHandler={buttonValueHander(languages.MN_POJ)} selected={language==languages.MN_POJ}/>
+    <LanguageRadio text="Tâi-lô" valueHandler={buttonValueHander(languages.MN_KIP)} selected={language==languages.MN_KIP}/>
   </div>
 </main>
 
@@ -34,14 +33,31 @@
     top: 2vh;
     right: 2vh;
     height: 1em;
-    background-color: var(--bgcol);
+    background-color: var(--bg);
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    border: 6px solid var(--bg3);
+    border-radius: 1em 1em 0em 0em;
   }
+
+  .dropdown{
+    width: 180px;
+    height: 60px;
+    font-size: 22px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .dropdown-content {
     display: flex;
     flex-direction: column;
     position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
+    top: 54px;
+    right: -6px;
+    width: 180px;
     z-index: 1;
     transform-origin: top center;
     transform: scaleY(0);
