@@ -11,7 +11,6 @@ import {RandText} from "./RandText";
     }
     chars.push(column)
   }
-  console.log(chars)
 
   let charsize:number = 48;
   let w:number = 0;

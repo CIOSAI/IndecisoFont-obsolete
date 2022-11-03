@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { each } from "svelte/internal";
   import DownloadButton from "./DownloadButton.svelte"
   import SourceButton from "./SourceButton.svelte";
 
@@ -6,7 +7,11 @@
 </script>
 
 <main>
-  <span id="logo">Indeciso</span>
+  <span id="logo">
+    {#each Array.from("Indeciso") as i}
+      <span class="logo-char">{i}</span>
+    {/each}
+  </span>
   {#if language==0}
     <span id="sub">A monospaced font that is a little too funky for a monospaced font</span>
   {:else if language==1}
@@ -32,15 +37,41 @@
     align-items: center;
     justify-content: center;
   }
+
+  @keyframes blink {
+  0%, 65% {
+    color: var(--text);
+  }
+
+  70% {
+    color: var(--highlight);
+  }
+
+  75%, 100% {
+    color: var(--text);
+  }}
   
   #logo{
     font-size: 16vw;
   }
 
+  .logo-char{
+    animation: blink 3s linear 0s infinite;
+  }
+
+  #logo .logo-char:nth-child(1) { animation-delay: .1s }
+  #logo .logo-char:nth-child(2) { animation-delay: .2s }
+  #logo .logo-char:nth-child(3) { animation-delay: .3s }
+  #logo .logo-char:nth-child(4) { animation-delay: .4s }
+  #logo .logo-char:nth-child(5) { animation-delay: .5s }
+  #logo .logo-char:nth-child(6) { animation-delay: .6s }
+  #logo .logo-char:nth-child(7) { animation-delay: .7s }
+  #logo .logo-char:nth-child(8) { animation-delay: .8s }
+
   #sub{
     text-align: center;
     max-width: 30%;
-    font-size: 2vw;
+    font-size: max(2vw, 18px);
   }
 
   #button-container{

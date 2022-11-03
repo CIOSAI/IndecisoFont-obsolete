@@ -47,12 +47,13 @@
   main {
     width: 100%;
     height: 100%;
-    max-height: 100%;
+    max-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   p{
+    overflow-anchor: none;
     text-align: center;
     font-size: 6vw;
   }
